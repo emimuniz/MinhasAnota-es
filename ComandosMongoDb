@@ -1,0 +1,40 @@
+Comandos do mongodb
+
+Database = Database
+Table = Collection
+Index = Index
+Row = Document
+Column = Field 
+Join = Embedding, Linking, $lookup, $graphLookup
+
+Comandos no banco de dados
+> show dbs;
+> use canalti;
+> show collections;
+> db.createCollection("item");
+> db.item.insert({ "name": "Item 1", "price": 10.0 });
+> db.item.find();
+> db.item.insertMany([ { "name": "Item 2", "price": 20.0 }, { "name": "Item 3", "price": 30.0 }]);
+> db.item.find().limit(1);
+> db.item.find({_id: ObjectId("5ff5f14c92040feeff5e12d7")});
+> db.item.find({name: "Item 2"});
+> db.item.find({name: "Item 2"}, {name: 1});
+> db.item.find({name: "Item 2"}, {_id: 0, name: 1});
+> db.item.find().count();
+> db.item.find({name: "Item 2"}).count();
+> db.item.remove({_id: ObjectId("5ff5f14c92040feeff5e12d8")});
+> db.item.update({_id: ObjectId("5ff5f0f092040feeff5e12d6")}, {$set: {price: 30.00}});
+> db.item.update({_id: ObjectId("5ff5f0f092040feeff5e12d6")}, {$set: {name: "Item 11", price: 30.00}});
+> db.item.find({price: { $gt: 25 }});
+> db.item.find({price: { $eq: 25 }});
+> db.item.find({price: { $gt: 25 }});
+> db.item.find({price: { $lt: 25 }});
+> db.item.find({price: { $in: [20.0, 30.0] }});
+> db.item.find({price: { $lt: 20.0 }});
+> db.item.find({price: { $lte: 20.0 }});
+> db.item.find({price: { $gt: 30 }});
+> db.item.find({price: { $gte: 30 }});
+> db.item.find({price: { $ne: 30 }});
+> db.item.find({price: { $nin: [20.0, 30.0] }});
+> db.item.find({$and: [{name: "Item 11"}, {price: 30.0}]});
+> db.item.find({$or: [{name: "Item 12"}, {price: 30.0}]});
